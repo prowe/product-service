@@ -2,7 +2,37 @@
     {
         "id": 1,
         "description": "Blue spinner",
-        "imageURL": "",
-        "price": 14.50
+        "imageURL": "https://images-na.ssl-images-amazon.com/images/I/41mIdZdsC+L._AC_US218_.jpg",
+        "price": 4.50
+    },
+    {
+        "id": 2,
+        "description": "Rainbow spinner",
+        "imageURL": "https://images-na.ssl-images-amazon.com/images/I/41uH+S9mSiL._AC_US218_.jpg",
+        "price": 5.99
+    },
+    {
+        "id": 3,
+        "description": "Dragon spinner",
+        "imageURL": "https://images-na.ssl-images-amazon.com/images/I/51qzMAMn5vL._AC_US218_.jpg",
+        "price": 9.99   
+    },
+    {
+        "id": 4,
+        "description": "Heart spinner",
+        "imageURL": "https://images-na.ssl-images-amazon.com/images/I/41XFyHuksAL._AC_US218_.jpg",
+        "price": 5.50
+    },
+    {
+        "id": 5,
+        "description": "Ninja spinner",
+        "imageURL": "https://images-na.ssl-images-amazon.com/images/I/4137BwOvNtL._AC_US218_.jpg",
+        "price": 3.33
+    },
+    {
+        "id": 6,
+        "description": "Gear spinner",
+        "imageURL": "https://images-na.ssl-images-amazon.com/images/I/519NX5SgIgL._AC_US218_.jpg",
+        "price": 12.27
     }
 ]
