@@ -30,6 +30,17 @@ app.use(corsMiddleware);
 app.get('/products', listProducts);
 app.get('/products/:id', getProductById);
 
+app.get('/shopping-cart', (req, res) => {
+    res.json({
+        products: [
+            {
+                productId: 2,
+                quantity: 1
+            }
+        ]
+    });
+});
+
 app.listen(PORT, () => {
     console.log('listening on port ', PORT);
 });
