@@ -32,8 +32,9 @@ app.get('/products/:id', getProductById);
 
 app.get('/shopping-cart', (req, res) => {
     res.json({
-        products: [
+        lineItems: [
             {
+                lineItemId: 1,
                 productId: 2,
                 quantity: 1
             }
