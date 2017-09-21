@@ -5,6 +5,7 @@ const PORT = 8080;
 
 function corsMiddleware(req, res, next) {
     res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Methods", "GET, DELETE, POST, PATCH");
     res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
     next();
 }
@@ -55,6 +56,18 @@ app.get('/shopping-carts/:id', (req, res) => {
     let id = req.params.id;
     let cart = shoppingCarts[id];
     res.json(cart);
+});
+
+app.delete('/shopping-carts/:id/line-items/:lineItemId', (req, res) => {
+    let id = req.params.id;
+    let lineItemId = req.params.lineItemId;
+    let cart = shoppingCarts[id];
+    if(cart) {
+        cart.lineItems = cart.lineItems.filter(li => li.lineitemId != lineItemId)
+        res.json(cart);
+    } else {
+        res.status(404).end();
+    }
 });
 
 app.listen(PORT, () => {
