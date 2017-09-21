@@ -1,4 +1,5 @@
 const express = require('express');
+const bodyParser = require('body-parser');
 const data = require('./data.json');
 const PORT = 8080;
 
@@ -27,19 +28,33 @@ function getProductById(req, res) {
 
 const app = express();
 app.use(corsMiddleware);
+app.use(bodyParser.json());
 app.get('/products', listProducts);
 app.get('/products/:id', getProductById);
 
-app.get('/shopping-cart', (req, res) => {
-    res.json({
-        lineItems: [
-            {
-                lineItemId: 1,
-                productId: 2,
-                quantity: 1
-            }
-        ]
-    });
+let lineItemIds = 0;
+const shoppingCarts = {};
+
+app.post('/shopping-carts/:id/line-items', (req, res) => {
+    let id = req.params.id;
+    let cart = shoppingCarts[id];
+    if(!cart) {
+        cart = shoppingCarts[id] = {
+            lineItems: []
+        };
+    }
+
+    let lineItem = req.body;
+    lineItem.lineItemId = ++lineItemIds;
+    console.log('adding', lineItem);
+    cart.lineItems.push(lineItem);
+    res.json(cart);
+});
+
+app.get('/shopping-carts/:id', (req, res) => {
+    let id = req.params.id;
+    let cart = shoppingCarts[id];
+    res.json(cart);
 });
 
 app.listen(PORT, () => {
