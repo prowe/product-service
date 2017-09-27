@@ -62,8 +62,9 @@ app.delete('/shopping-carts/:id/line-items/:lineItemId', (req, res) => {
     let id = req.params.id;
     let lineItemId = req.params.lineItemId;
     let cart = shoppingCarts[id];
+    console.log('deleting item ', lineItemId);
     if(cart) {
-        cart.lineItems = cart.lineItems.filter(li => li.lineitemId != lineItemId)
+        cart.lineItems = cart.lineItems.filter(li => li.lineItemId != lineItemId)
         res.json(cart);
     } else {
         res.status(404).end();
